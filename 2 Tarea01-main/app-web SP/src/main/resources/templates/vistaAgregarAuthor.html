@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!-- Link to Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+</head>
+<body>
+
+<form action="/addAuthor" method="post" class="container">
+  <div class="field" hidden>
+    <label class="label" for="id">ID</label>
+    <div class="control">
+      <input class="input" type="text" id="id" name="id" th:value="${author.id}" />
+    </div>
+  </div>
+  </div>
+  <div class="field">
+    <label class="label" for="firstName">First Name</label>
+    <div class="control">
+      <input class="input" type="text" id="firstName" name="firstName" th:value="${author.firstname}" required>
+    </div>
+  </div>
+  </div>
+  <div class="field">
+    <label class="label">Last Name</label>
+    <div class="control">
+      <input class="input" type="text" id="lastName" name="lastName" th:value="${author.lastname}" required>
+    </div>
+  </div>
+  <div class="field is-grouped">
+    <div class="control">
+      <a class="button is-link" href="/">Cancel</a>
+    </div>
+    <div class="control">
+      <button class="button is-primary" type="submit">Save</button>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id "io.freefair.lombok" version "6.6.1"
+}
+
+group 'com.distribuida'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext{
+    helidonversion = '3.0.2'
+}
+
+dependencies {
+    // import Helidon dependency management
+    implementation platform("io.helidon:helidon-dependencies:${project.helidonversion}")
+
+    // https://mvnrepository.com/artifact/io.helidon.microprofile.server/helidon-microprofile-server
+    implementation group: 'io.helidon.microprofile.server', name: 'helidon-microprofile-server', version: '3.1.0'
+    implementation 'org.glassfish.jersey.media:jersey-media-json-binding'//acepte peticiones de clientes
+
+    // https://mvnrepository.com/artifact/com.zaxxer/HikariCP
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'//pool de conexiones
+
+    // JDBI
+    implementation group: 'org.jdbi', name: 'jdbi3-core', version: '3.36.0' //jdbi core
+
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.1'//pueda reconocer el driver
+
+    // https://mvnrepository.com/artifact/org.jdbi/jdbi3-core
+    implementation group: 'org.jdbi', name: 'jdbi3-sqlobject', version: '3.36.0' //para poder agregar query en la interfaz
+}
+
+sourceSets {
+    main{
+        output.resourcesDir = file("${buildDir}/classes/java/main")
+    }
+}

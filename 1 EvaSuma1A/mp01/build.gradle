@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+    id 'application'
+    //plugins de lombook paa poder generar Gett and Setters
+    id "io.freefair.lombok" version "6.6.1"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    helidonversion = '3.0.2'
+}
+dependencies {
+    // import Helidon dependency management
+    implementation platform("io.helidon:helidon-dependencies:${project.helidonversion}")//para poder implementar el jersey y demas
+    //instala todos los modulos de MP ---
+    //implementation 'io.helidon.microprofile.bundles:helidon-microprofile'
+
+    implementation group: 'io.helidon.microprofile.server', name: 'helidon-microprofile-server', version: '3.0.2'//necesita por el @ApplicationScope
+
+    implementation 'org.glassfish.jersey.media:jersey-media-json-binding'//para que el cliente pueda consumir el servicio
+//
+//    runtimeOnly 'org.jboss:jandex'
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.1'
+
+
+    // https://mvnrepository.com/artifact/org.jdbi/jdbi3-postgres
+    testImplementation group: 'org.jdbi', name: 'jdbi3-postgres', version: '3.36.0'
+
+    // https://mvnrepository.com/artifact/org.jdbi/jdbi3
+    implementation group: 'org.jdbi', name: 'jdbi3', version: '3.0.0-beta2'
+    // https://mvnrepository.com/artifact/org.jdbi/jdbi3-sqlobject
+    implementation group: 'org.jdbi', name: 'jdbi3-sqlobject', version: '3.36.0'
+    // https://mvnrepository.com/artifact/org.jdbi/jdbi3-core
+    implementation group: 'org.jdbi', name: 'jdbi3-core', version: '3.36.0'
+
+
+}
+
+sourceSets {
+    main {
+        output.resourcesDir = file("${buildDir}/classes/java/main")
+    }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+</head>
+<body>
+<br>
+<a class="button is-light" href="/">Back</a>
+<a class="button is-success" href="/addBook">Add Book</a>
+
+<table class="table is-striped">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Author</th>
+    <th>ISBN</th>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="b:${books}">
+    <td th:text="${b.id}"></td>
+    <td th:text="${b.author}"></td>
+    <td th:text="${b.isbn}"></td>
+    <td th:text="${b.title}"></td>
+    <td th:text="${b.price}"></td>
+    <td>
+      <a class="button is-primary" th:href="'/updateBook/'+${b.id}">Edit</a>
+    </td>
+    <td>
+      <a class="button is-danger" th:href="'/deleteBook/'+${b.id}">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
